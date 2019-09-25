@@ -1,0 +1,12 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace:指定为哪个接口提供配置 --> 
+<mapper namespace="com.wang.dao.UserDao">
+
+	<select id="queryAll" resultType="User">
+		SELECT *
+		FROM t_user_info
+	</select>
+
+</mapper>
