@@ -6,7 +6,31 @@
 
 	<select id="queryAll" resultType="User">
 		SELECT *
-		FROM t_user_info
+		FROM t_user_info_copy
 	</select>
-
+	
+	<select id="queryById" resultType="User" parameterType="long">
+		SELECT *
+		FROM t_user_info_copy	 
+		where id =#{id}
+	</select>
+	
+	<update id="updateUser" parameterType="User">
+		update T_USER_INFO_COPY set person_name=#{personName}
+		<if test="email!=null">
+			, email=#{email} 
+		</if> 
+		<if test="phone!=null">
+			, phone=#{phone} 
+		</if>  
+	     where id =#{id}
+	</update>
+	
+	<insert id="insertUser" parameterType="User">
+		INSERT INTO T_USER_INFO_COPY
+		(ID, PERSON_NAME, EMAIL, PHONE)
+		VALUES
+		(#{id}, #{personName}, #{email},#{phone})
+	</insert>
+	
 </mapper>

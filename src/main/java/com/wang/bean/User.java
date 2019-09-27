@@ -3,7 +3,7 @@ package com.wang.bean;
 public class User {
 
     private long id;
-    private String person_name;
+    private String personName;
     private String phone;
 	private String email;
 	
@@ -13,12 +13,7 @@ public class User {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String getPerson_name() {
-		return person_name;
-	}
-	public void setPerson_name(String person_name) {
-		this.person_name = person_name;
-	}
+
 	public String getPhone() {
 		return phone;
 	}
@@ -33,6 +28,12 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return  id+"--"+person_name+"--"+email+"--"+phone;
+		return  id+"--"+personName+"--"+email+"--"+phone;
+	}
+	public String getPersonName() {
+		return personName;
+	}
+	public void setPersonName(String personName) {
+		this.personName = personName;
 	}
 }

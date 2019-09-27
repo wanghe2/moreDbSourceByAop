@@ -32,13 +32,13 @@ public class DbConfig {
 	
 	@Bean("mysqlSource")
 	public DataSource mysqlSource() {
-		DruidDataSource mysqlDataSource=new DruidDataSource();
-		mysqlDataSource.setDriverClassName(dbPropertiesByAuto.mysqldirver);
-		mysqlDataSource.setUrl(dbPropertiesByAuto.mysqlurl);
-		mysqlDataSource.setUsername(dbPropertiesByAuto.mysqlusername);
-		mysqlDataSource.setPassword(dbPropertiesByAuto.mysqlpwd);
-		mysqlDataSource.setMaxActive(dbPropertiesByAuto.maxActive);
-		return mysqlDataSource;
+		DruidDataSource mysqlSource=new DruidDataSource();
+		mysqlSource.setDriverClassName(dbPropertiesByAuto.mysqldirver);
+		mysqlSource.setUrl(dbPropertiesByAuto.mysqlurl);
+		mysqlSource.setUsername(dbPropertiesByAuto.mysqlusername);
+		mysqlSource.setPassword(dbPropertiesByAuto.mysqlpwd);
+		mysqlSource.setMaxActive(dbPropertiesByAuto.maxActive);
+		return mysqlSource;
 	}
 	
 	@Bean("oracleSource")
@@ -81,7 +81,8 @@ public class DbConfig {
 	
 	
 	@Bean
-	public PlatformTransactionManager mysqlTransactionManager(DataSource multipleDataSource) {
+	@Primary
+	public PlatformTransactionManager multipleDataSourceTransactionManager(DataSource multipleDataSource) {
 		DataSourceTransactionManager mysqlTransactionManager=new DataSourceTransactionManager() ;
 		mysqlTransactionManager.setDataSource(multipleDataSource);
 		return mysqlTransactionManager;

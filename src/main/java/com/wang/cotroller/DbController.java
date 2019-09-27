@@ -7,11 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wang.annotation.MoreDataSourceAnnotation;
 import com.wang.annotation.WangAnnotation;
 import com.wang.bean.Seckill;
 import com.wang.bean.User;
 import com.wang.service.SeckillService;
 import com.wang.service.UserService;
+import com.wang.util.DataSourceType;
 
 @RestController
 public class DbController {
@@ -51,5 +53,19 @@ public class DbController {
 		return "good";
 	}
 	
+	@RequestMapping("operateMysqlDb")
+	public String operateMysqlDb() {
+		seckillService.dbOperateWithShiwu();
+		return "完成";
+	}
+	
+	
+	@RequestMapping("operateOracleDb")
+	@MoreDataSourceAnnotation(datasource=DataSourceType.OracleDataSouce)
+	//在controller中加入切换数据源注解，实属无奈，原因可以看readme文档说明
+	public String operateOracleDb() {
+		userService.dbOperateWithShiwu();
+		return "完成";
+	}
 	
 }

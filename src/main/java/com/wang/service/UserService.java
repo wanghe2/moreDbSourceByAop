@@ -5,5 +5,7 @@ import java.util.List;
 import com.wang.bean.User;
 
 public interface UserService {
-	public List<User> queryAll();
+	 List<User> queryAll();
+	 
+	 void dbOperateWithShiwu();
 }

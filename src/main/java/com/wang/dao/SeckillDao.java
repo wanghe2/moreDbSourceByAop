@@ -3,12 +3,7 @@ package com.wang.dao;
 import java.util.List;
 
 import com.wang.bean.Seckill;
-/**
- * 其实可以用  @MoreDataSourceAnnotation(datasource=DataSourceType.MysqlDataSouce)去修饰，
- * 但是默认数据源就是mysqlsouce,所以没这必要了
- * @author wanghe
- *
- */
+
 public interface SeckillDao {
 
 	/**
@@ -23,5 +18,8 @@ public interface SeckillDao {
 	 * @return
 	 */
 	List<Seckill>queryAll();
-
+	
+	void insertSeckill(Seckill seckill);
+	
+	void updateSeckill(Seckill seckill);
 }

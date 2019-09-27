@@ -13,7 +13,7 @@
         -->
 		SELECT seckill_id,name,number,create_time,start_time,end_time
 		FROM seckill
-		WHERE seckill_id=#{seckillId}
+		WHERE seckill_id= #{seckillId}
 	</select>
 
 	<select id="queryAll" resultType="Seckill">
@@ -21,4 +21,35 @@
 		FROM seckill
 		ORDER BY create_time DESC
 	</select>
+	
+	<insert id="insertSeckill" parameterType="Seckill">
+		INSERT INTO seckill
+		(
+		  seckill_id
+		  , name
+		  , number
+		  , create_time
+		  , start_time
+		  , end_time
+		)
+		VALUES
+		(
+		  #{seckillId}
+		  , #{name}
+		  , #{number}
+		  , #{createTime}
+		  , #{startTime}
+		  , #{endTime}
+		)
+	</insert>
+	
+	<update id="updateSeckill" parameterType="Seckill">
+		update seckill set number=#{number}
+		<if test="name!=null">
+			, name=#{name} 
+		</if>  
+	     where seckill_id=#{seckillId}
+	</update>
+	
+	
 </mapper>
